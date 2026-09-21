@@ -40,6 +40,7 @@ export default function CanvasEditor() {
     () => canvas.elements.find((element) => element.id === selectedId) || null,
     [canvas.elements, selectedId]
   );
+  const canAuthenticate = credentials.email.trim().length > 0 && credentials.password.length >= 6;
 
   const commitCanvas = useCallback((nextCanvas, { record = true } = {}) => {
     setCanvas((current) => {
@@ -239,7 +240,7 @@ export default function CanvasEditor() {
           <h2>Account</h2>
           <input placeholder="Email" type="email" value={credentials.email} onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} />
           <input placeholder="Password" type="password" value={credentials.password} onChange={(e) => setCredentials({ ...credentials, password: e.target.value })} />
-          <div className="split-actions"><button onClick={() => authenticate('login')}>Sign in</button><button onClick={() => authenticate('register')}>Register</button></div>
+          <div className="split-actions"><button onClick={() => authenticate('login')} disabled={!canAuthenticate}>Sign in</button><button onClick={() => authenticate('register')} disabled={!canAuthenticate}>Register</button></div>
           {token && <button onClick={() => { localStorage.removeItem('canvas-token'); setToken(''); setSavedCanvases([]); }}>Sign out</button>}
           <hr />
           <h2>Saved canvases</h2>
