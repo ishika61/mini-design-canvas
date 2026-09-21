@@ -271,5 +271,6 @@ export default function CanvasEditor() {
 }
 
 function Field({ label, type, value, onChange }) {
-  return <label>{label}<input type={type} value={value} onChange={(event) => onChange(event.target.value)} /></label>;
+  const requiresPositiveValue = ['Width', 'Height', 'Radius', 'Font size'].includes(label);
+  return <label>{label}<input type={type} min={requiresPositiveValue ? 1 : undefined} value={value} onChange={(event) => onChange(event.target.value)} /></label>;
 }

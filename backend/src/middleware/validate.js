@@ -26,6 +26,21 @@ const canvasFields = [
   body('elements.*.text').optional().isString().isLength({ max: 5000 }).withMessage('Text must be at most 5000 characters'),
   body('elements.*.fontSize').optional().isFloat({ gt: 0, max: 500 }).withMessage('Font size must be between 0 and 500'),
   body('elements.*.zIndex').optional().isInt({ min: 0 }).withMessage('zIndex must be a non-negative integer'),
+  body('elements.*').custom((element) => {
+    if (!element || typeof element !== 'object') {
+      throw new Error('Each element must be an object');
+    }
+    if ((element.type === 'rect' || element.type === 'text') && (!Number.isFinite(element.width) || !Number.isFinite(element.height))) {
+      throw new Error('Rectangle and text elements require width and height');
+    }
+    if (element.type === 'circle' && !Number.isFinite(element.radius)) {
+      throw new Error('Circle elements require a radius');
+    }
+    if (element.type === 'text' && typeof element.text !== 'string') {
+      throw new Error('Text elements require text content');
+    }
+    return true;
+  }),
 ];
 
 const createCanvasValidation = [
