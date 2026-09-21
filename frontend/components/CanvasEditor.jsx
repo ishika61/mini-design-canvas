@@ -1,7 +1,9 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import DesignStage from './DesignStage';
+
+const DesignStage = dynamic(() => import('./DesignStage'), { ssr: false });
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 const blankCanvas = () => ({ name: 'Untitled canvas', elements: [] });
