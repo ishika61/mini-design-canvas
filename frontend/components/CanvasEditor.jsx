@@ -259,7 +259,7 @@ export default function CanvasEditor() {
           <h2>Properties</h2>
           {!selected && <p>Select an element to edit it.</p>}
           {selected && <>
-            <label>Position</label><div className="number-pair"><input type="number" value={selected.x} onChange={(e) => updateSelected('x', e.target.value)} /><input type="number" value={selected.y} onChange={(e) => updateSelected('y', e.target.value)} /></div>
+            <label>Position</label><div className="number-pair"><label>X<input aria-label="X position" type="number" value={selected.x} onChange={(e) => updateSelected('x', e.target.value)} /></label><label>Y<input aria-label="Y position" type="number" value={selected.y} onChange={(e) => updateSelected('y', e.target.value)} /></label></div>
             {selected.type === 'circle' ? <Field label="Radius" type="number" value={selected.radius} onChange={(value) => updateSelected('radius', value)} /> : <><Field label="Width" type="number" value={selected.width} onChange={(value) => updateSelected('width', value)} /><Field label="Height" type="number" value={selected.height} onChange={(value) => updateSelected('height', value)} /></>}
             <Field label="Rotation" type="number" value={selected.rotation || 0} onChange={(value) => updateSelected('rotation', value)} />
             <label>Color<input type="color" value={selected.fill} onChange={(e) => updateSelected('fill', e.target.value)} /></label>
