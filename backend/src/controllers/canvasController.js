@@ -37,7 +37,11 @@ const getCanvasById = async (req, res, next) => {
 const updateCanvas = async (req, res, next) => {
   try {
     const ownerId = req.user ? req.user.id : undefined;
-    const canvas = await canvasService.updateCanvas(req.params.id, req.body, ownerId);
+    const { name, elements } = req.body;
+    const updates = {};
+    if (name !== undefined) updates.name = name;
+    if (elements !== undefined) updates.elements = elements;
+    const canvas = await canvasService.updateCanvas(req.params.id, updates, ownerId);
     res.status(200).json(canvas);
   } catch (err) {
     next(err);
