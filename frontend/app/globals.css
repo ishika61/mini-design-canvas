@@ -1,43 +1,3 @@
-/* :root { color: #182033; background: #eef1f7; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-* { box-sizing: border-box; }
-body { margin: 0; }
-button, input, textarea { font: inherit; }
-button { border: 1px solid #d7dce8; border-radius: 8px; background: #fff; color: #25304a; cursor: pointer; padding: 9px 11px; }
-button:hover:not(:disabled) { border-color: #5b7cfa; color: #3154d4; }
-button:disabled { opacity: .45; cursor: not-allowed; }
-input, textarea { width: 100%; border: 1px solid #d7dce8; border-radius: 7px; background: #fff; padding: 8px 9px; color: #17213a; }
-textarea { min-height: 80px; resize: vertical; }
-.app-shell { min-height: 100vh; }
-.topbar { height: 70px; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid #dfe3ec; }
-.topbar strong { display: block; font-size: 18px; letter-spacing: -.3px; }
-.topbar span { color: #73809a; font-size: 12px; }
-.actions, .split-actions { display: flex; gap: 8px; }
-.primary { color: #fff; background: #4266ef; border-color: #4266ef; }
-.primary:hover:not(:disabled) { color: #fff; background: #3155df; }
-.workspace { display: grid; grid-template-columns: 230px minmax(600px, 1fr) 240px; min-height: calc(100vh - 70px); }
-.left-panel, .right-panel { background: #fff; padding: 20px; border-right: 1px solid #dfe3ec; }
-.right-panel { border-left: 1px solid #dfe3ec; border-right: 0; }
-.left-panel h2, .right-panel h2 { margin: 0 0 12px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #6c7890; }
-.left-panel > button, .left-panel > input, .right-panel input, .right-panel textarea, .right-panel label { margin-bottom: 9px; }
-.left-panel > button { width: 100%; text-align: left; }
-hr { border: 0; border-top: 1px solid #e5e8ef; margin: 20px 0; }
-.saved-list p, .right-panel p { color: #7a8497; font-size: 13px; line-height: 1.5; }
-.saved-item { display: flex; gap: 5px; margin-bottom: 6px; }
-.saved-item button:first-child { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
-.saved-item button:last-child { color: #bd3645; padding: 6px 10px; }
-.editor { padding: 26px; overflow: auto; background-color: #edf0f5; background-image: radial-gradient(#cbd1dd 1px, transparent 1px); background-size: 18px 18px; }
-.canvas-title { width: 900px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.canvas-title input { width: 300px; background: rgba(255,255,255,.92); font-weight: 600; }
-.canvas-title span { color: #68758c; font-size: 13px; }
-.stage-wrap { width: 900px; line-height: 0; box-shadow: 0 10px 32px rgba(27, 42, 73, .16); }
-.right-panel label { display: block; color: #647089; font-size: 12px; font-weight: 600; }
-.right-panel label input, .right-panel label textarea { margin-top: 5px; }
-.right-panel input[type="color"] { height: 36px; padding: 3px; }
-.number-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 5px 0 9px; }
-.danger { width: 100%; margin-top: 10px; color: #b3293a; border-color: #e8aeb7; }
-@media (max-width: 1100px) { .workspace { grid-template-columns: 210px minmax(600px, 1fr); } .right-panel { grid-column: 1 / -1; border-left: 0; border-top: 1px solid #dfe3ec; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; } .right-panel h2, .right-panel p { grid-column: 1 / -1; } }
-@media (max-width: 760px) { .topbar { height: auto; padding: 14px; gap: 12px; align-items: flex-start; } .actions { flex-wrap: wrap; justify-content: flex-end; } .workspace { display: block; } .left-panel { border-bottom: 1px solid #dfe3ec; } .editor { padding: 15px; } .right-panel { display: block; } } */
-
 
 
 
@@ -325,6 +285,16 @@ hr {
   padding: 5px 12px;
   white-space: nowrap;
 }
+.canvas-title span.notice-success {
+  color: var(--success-text);
+  background: color-mix(in srgb, var(--success) 30%, var(--panel));
+  border-color: var(--success);
+}
+.canvas-title span.notice-error {
+  color: var(--danger);
+  background: var(--danger-bg);
+  border-color: var(--danger);
+}
 
 .stage-wrap {
   width: 900px;
@@ -409,4 +379,19 @@ hr {
   border-radius: 50%;
   background: var(--success);
   flex-shrink: 0;
+}
+
+
+
+
+
+.notice-success {
+  color: var(--success-text);
+  background: color-mix(in srgb, var(--success) 30%, var(--panel));
+  border-color: var(--success);
+}
+.notice-error {
+  color: var(--danger);
+  background: var(--danger-bg);
+  border-color: var(--danger);
 }

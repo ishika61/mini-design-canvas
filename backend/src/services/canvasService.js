@@ -25,7 +25,7 @@ const getCanvasById = async (id, ownerId) => {
 const updateCanvas = async (id, updates, ownerId) => {
   const filter = ownerId ? { _id: id, owner: ownerId } : { _id: id };
   const canvas = await Canvas.findOneAndUpdate(filter, updates, {
-    new: true,
+   returnDocument: 'after',
     runValidators: true,
   });
   if (!canvas) {
