@@ -137,9 +137,8 @@ Create/update `frontend/.env.local`:
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
-```
-
 Open [http://localhost:3000](http://localhost:3000).
+```
 ```
 ```
 ## API endpoints
